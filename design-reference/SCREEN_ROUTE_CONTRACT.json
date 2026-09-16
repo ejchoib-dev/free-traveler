@@ -1,0 +1,122 @@
+{
+  "schema_version": "traveler-screen-route-v1",
+  "framework": "nextjs-app-router",
+  "source_documents": [
+    "docs/03_UI_COVERAGE_ANALYSIS.md",
+    "docs/04_UIUX_PLAN.md",
+    "docs/STITCH_VALIDATION_REPORT.md",
+    "design-reference/D-001/DESIGN.md",
+    "design-reference/UI_CONTRACT.md"
+  ],
+  "screens": [
+    {
+      "screen_id": "SCR-001",
+      "role": "auxiliary",
+      "route": "/",
+      "page_entry": "src/app/page.tsx",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": true,
+      "mobile_variant_required": true,
+      "ui_contract_ref": "UI_CONTRACT.md#scr-001--메인-보조허브"
+    },
+    {
+      "screen_id": "SCR-002",
+      "role": "core",
+      "route": "/about",
+      "page_entry": "src/app/about/page.tsx",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_required": false,
+      "ui_contract_ref": "UI_CONTRACT.md#scr-002--대표-소개-핵심"
+    },
+    {
+      "screen_id": "SCR-003",
+      "role": "core",
+      "route": "/travel-tools",
+      "page_entry": "src/app/travel-tools/page.tsx",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_required": true,
+      "ui_contract_ref": "UI_CONTRACT.md#scr-003--여행-준비-핵심"
+    },
+    {
+      "screen_id": "SCR-004",
+      "role": "core",
+      "route": "/mates",
+      "page_entry": "src/app/mates/page.tsx",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_required": false,
+      "ui_contract_ref": "UI_CONTRACT.md#scr-004--동행-찾기-핵심"
+    },
+    {
+      "screen_id": "SCR-005",
+      "role": "core",
+      "route": "/account",
+      "page_entry": "src/app/account/page.tsx",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_required": false,
+      "ui_contract_ref": "UI_CONTRACT.md#scr-005--계정-핵심",
+      "known_gap": "STITCH_VALIDATION_REPORT.md 기준 Guest/Admin 화면이 승인된 Stitch 내보내기에 없음 — UI_CONTRACT.md 계약을 기준으로 신규 구현 필요"
+    }
+  ],
+  "screen_count_summary": {
+    "total": 5,
+    "core": 4,
+    "auxiliary": 1
+  },
+  "technical_routes": [
+    {
+      "type": "auth_callback",
+      "route": "/auth/callback",
+      "page_entry": "src/app/auth/callback/route.ts",
+      "note": "Supabase 이메일 인증 콜백 처리(REQ-FUNC-066). 디자인 Screen 수에 포함하지 않음"
+    },
+    {
+      "type": "api_route",
+      "route": "/api/*",
+      "page_entry": "src/app/api/**/route.ts",
+      "note": "서버 처리가 꼭 필요한 최소 API Route만(예: 관리자 외부 URL 허용목록 검증, REQ-FUNC-077). 항공·숙소 입력값은 서버에 저장하지 않으므로 전용 API Route를 만들지 않음(REQ-FUNC-017/025). 디자인 Screen 수에 포함하지 않음"
+    },
+    {
+      "type": "not_found",
+      "route": "*",
+      "page_entry": "src/app/not-found.tsx",
+      "note": "404 복구 화면(REQ-FUNC-078). 디자인 Screen 수에 포함하지 않음"
+    },
+    {
+      "type": "error_boundary",
+      "route": "*",
+      "page_entry": "src/app/error.tsx",
+      "note": "500/런타임 오류 복구 화면(REQ-FUNC-078). 디자인 Screen 수에 포함하지 않음"
+    }
+  ],
+  "required_navigation": [
+    { "from": "SCR-001", "to": "SCR-002", "trigger": "대표 소개 배너 CTA" },
+    { "from": "SCR-001", "to": "SCR-003", "trigger": "Hero CTA / 동행 미리보기 Empty CTA" },
+    { "from": "SCR-001", "to": "SCR-004", "trigger": "동행 미리보기 '동행 전체 보기'" },
+    { "from": "SCR-001", "to": "SCR-005", "trigger": "Header 계정 아이콘(비로그인)" },
+    { "from": "SCR-002", "to": "SCR-001", "trigger": "추천 여행지 카드(상세 Drawer 오픈)" },
+    { "from": "SCR-002", "to": "SCR-003", "trigger": "하단 CTA Banner" },
+    { "from": "SCR-002", "to": "SCR-004", "trigger": "하단 CTA Banner" },
+    { "from": "SCR-003", "to": "external_site", "trigger": "항공편/호텔 '보러 가기' 버튼(새 탭, noopener noreferrer)" },
+    { "from": "SCR-003", "to": "SCR-005", "trigger": "동행 탭 미인증 안내 CTA" },
+    { "from": "SCR-003", "to": "SCR-004", "trigger": "동행글 작성 완료 후 이동" },
+    { "from": "SCR-004", "to": "SCR-003", "trigger": "Intro/안전 안내 배너 CTA" },
+    { "from": "SCR-004", "to": "SCR-005", "trigger": "Unauthorized 안내 CTA" },
+    { "from": "SCR-005", "to": "SCR-004", "trigger": "내 글/참가 요청 항목 클릭" },
+    { "from": "SCR-005", "to": "SCR-003", "trigger": "새 동행글 작성 CTA" }
+  ],
+  "completion_checks": {
+    "no_duplicate_routes": true,
+    "no_duplicate_page_entries": true,
+    "screen_count_is_5": true,
+    "core_4_auxiliary_1_present": true
+  }
+}

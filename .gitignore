@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Stitch 원본 내보내기(디자인 정본은 design-reference/에 이미 정리됨 — 원본 zip/추출본/스크린샷은 추적하지 않음)
+/stitch_free_traveler*.zip
+/stitch_free_traveler (1)/
+/.stitch_preview/
