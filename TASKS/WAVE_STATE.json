@@ -11,9 +11,15 @@
         "SHARED-FAVORITES",
         "SHARED-TOAST"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "task_status": {
+        "DATA-DESTINATIONS": "ready",
+        "SHARED-DESIGN-TOKENS": "ready",
+        "SHARED-FAVORITES": "ready",
+        "SHARED-TOAST": "ready"
+      }
     },
     {
       "wave_id": "W02",
