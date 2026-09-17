@@ -52,8 +52,8 @@ FIXED_SCREENS = [
 FIXED_SCREEN_ROUTES = {route: screen_id for screen_id, route in FIXED_SCREENS}
 FIXED_SCREEN_IDS = {screen_id for screen_id, _ in FIXED_SCREENS}
 
-# 허용 기술 경로(사용자 화면으로 세지 않는다)
-TECH_ROUTE_PREFIXES = ("/api/",)
+# 허용된 비-Screen 공개 경로(사용자 화면 5개로 세지 않는다) — 기술 경로 + DEC-015 정적 정책 문서
+TECH_ROUTE_PREFIXES = ("/api/", "/legal/")
 TECH_ROUTE_EXACT = ("/auth/callback", "/api")
 
 # 여행지 상세·안전정보는 SCR-001 Drawer로만 구현한다(별도 Page 금지) — 새 경로 이름에서 이 패턴이

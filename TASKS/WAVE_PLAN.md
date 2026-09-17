@@ -7,7 +7,7 @@ Task 의존관계·그룹별 4~7개 배치·파일 충돌 분리 규칙에 따�
 | Wave | Group | Task IDs (Task ID 순으로 한 개씩 실행) | Preview Checkpoint |
 |---|---|---|---|
 | W01 | 2. Airbnb 스타일 공통 UI, 정적 데이터, Layout | DATA-DESTINATIONS, SHARED-DESIGN-TOKENS, SHARED-FAVORITES, SHARED-TOAST | 아니오 |
-| W02 | 2. Airbnb 스타일 공통 UI, 정적 데이터, Layout | DATA-REPRESENTATIVE, DATA-SAFETY, SHARED-LAYOUT | 아니오 |
+| W02 | 2. Airbnb 스타일 공통 UI, 정적 데이터, Layout | DATA-REPRESENTATIVE, DATA-SAFETY, SHARED-LAYOUT, COMP-LEGAL-DOCS | 아니오 |
 | W03 | 2. Airbnb 스타일 공통 UI, 정적 데이터, Layout | SHARED-ERROR-PAGES | 아니오 |
 | W04 | 3. Supabase Auth, 6개 Table, 기본 RLS | DB-SCHEMA-BASE | 아니오 |
 | W05 | 3. Supabase Auth, 6개 Table, 기본 RLS | DB-RLS-BASE, SHARED-AUTH-SETUP | 아니오 |

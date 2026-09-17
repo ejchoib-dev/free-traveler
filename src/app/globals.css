@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* design-reference/D-001/DESIGN.md §2 Color Token */
+  --color-primary: #ff6b4a;
+  --color-primary-active: #e24f2e;
+  --color-primary-disabled: #ffd8cc;
+  --color-ink: #26262a;
+  --color-body: #46484d;
+  --color-muted: #71737b;
+  --color-muted-soft: #a0a2aa;
+  --color-canvas: #ffffff;
+  --color-surface-soft: #f7f7f8;
+  --color-surface-strong: #efeff1;
+  --color-hairline: #e3e3e6;
+  --color-hairline-soft: #ececee;
+  --color-border-strong: #c6c7cc;
+  --color-on-primary: #ffffff;
+  --color-danger: #d1373f;
+  --color-danger-soft: #fdecec;
+  --color-warning: #b7791f;
+  --color-warning-soft: #fff4de;
+  --color-critical: #b42318;
+  --color-critical-soft: #fbe7e5;
+  --color-info: #2f6fed;
+  --color-info-soft: #eaf1fe;
+  --color-success: #147d53;
+  --color-success-soft: #e7f6ee;
+
+  /* §5 Radius */
+  --radius-token-sm: 8px;
+  --radius-token-md: 12px;
+  --radius-token-lg: 16px;
+  --radius-token-full: 9999px;
+
+  /* §6 Shadow — 유일한 그림자 단계(카드 hover/Drawer/드롭다운 전용) */
+  --shadow-card:
+    0 1px 2px rgba(20, 20, 20, 0.04), 0 4px 12px rgba(20, 20, 20, 0.08);
+
+  /* §4 Spacing — 8px 배수 체계 */
+  --spacing-token-xxs: 2px;
+  --spacing-token-xs: 4px;
+  --spacing-token-sm: 8px;
+  --spacing-token-md: 12px;
+  --spacing-token-lg: 16px;
+  --spacing-token-xl: 24px;
+  --spacing-token-xxl: 32px;
+  --spacing-token-xxxl: 48px;
+  --spacing-section-hero-desktop: 64px;
+  --spacing-section-standard-desktop: 80px;
+  --spacing-section-cta-desktop: 96px;
+  --spacing-section-standard-mobile: 48px;
+  --spacing-section-compact-mobile: 40px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--color-primary);
+  --color-primary-active: var(--color-primary-active);
+  --color-primary-disabled: var(--color-primary-disabled);
+  --color-ink: var(--color-ink);
+  --color-body: var(--color-body);
+  --color-muted: var(--color-muted);
+  --color-muted-soft: var(--color-muted-soft);
+  --color-canvas: var(--color-canvas);
+  --color-surface-soft: var(--color-surface-soft);
+  --color-surface-strong: var(--color-surface-strong);
+  --color-hairline: var(--color-hairline);
+  --color-hairline-soft: var(--color-hairline-soft);
+  --color-border-strong: var(--color-border-strong);
+  --color-on-primary: var(--color-on-primary);
+  --color-danger: var(--color-danger);
+  --color-danger-soft: var(--color-danger-soft);
+  --color-warning: var(--color-warning);
+  --color-warning-soft: var(--color-warning-soft);
+  --color-critical: var(--color-critical);
+  --color-critical-soft: var(--color-critical-soft);
+  --color-info: var(--color-info);
+  --color-info-soft: var(--color-info-soft);
+  --color-success: var(--color-success);
+  --color-success-soft: var(--color-success-soft);
+
+  /* §3 Typography — Inter + 한글 시스템 fallback(Inter는 한글 글리프 없음) */
+  --font-sans:
+    "Inter", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans KR", system-ui, sans-serif;
+  --text-display-xl: 32px;
+  --text-display-lg: 24px;
+  --text-display-md: 20px;
+  --text-title-md: 18px;
+  --text-title-sm: 16px;
+  --text-body-md: 16px;
+  --text-body-sm: 14px;
+  --text-caption: 13px;
+  --text-button: 16px;
+
+  --radius-token-sm: var(--radius-token-sm);
+  --radius-token-md: var(--radius-token-md);
+  --radius-token-lg: var(--radius-token-lg);
+  --radius-token-full: var(--radius-token-full);
+
+  --shadow-card: var(--shadow-card);
+
+  --spacing-token-xxs: var(--spacing-token-xxs);
+  --spacing-token-xs: var(--spacing-token-xs);
+  --spacing-token-sm: var(--spacing-token-sm);
+  --spacing-token-md: var(--spacing-token-md);
+  --spacing-token-lg: var(--spacing-token-lg);
+  --spacing-token-xl: var(--spacing-token-xl);
+  --spacing-token-xxl: var(--spacing-token-xxl);
+  --spacing-token-xxxl: var(--spacing-token-xxxl);
+  --spacing-section-hero-desktop: var(--spacing-section-hero-desktop);
+  --spacing-section-standard-desktop: var(--spacing-section-standard-desktop);
+  --spacing-section-cta-desktop: var(--spacing-section-cta-desktop);
+  --spacing-section-standard-mobile: var(--spacing-section-standard-mobile);
+  --spacing-section-compact-mobile: var(--spacing-section-compact-mobile);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* D-001 §2: canvas는 전 화면 공통 단일 배경(다크모드 없음) */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }

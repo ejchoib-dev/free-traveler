@@ -13,8 +13,8 @@
 
 | # | 검사 | 결과 | 상세 |
 |---|---|---|---|
-| 1 | Task List 구현 ID ↔ 상세 Task 파일 1:1 | PASS | 61개 일치 |
-| 2 | 중복 Task ID 0 | PASS | 61개 Task ID 모두 고유 |
+| 1 | Task List 구현 ID ↔ 상세 Task 파일 1:1 | PASS | 62개 일치 |
+| 2 | 중복 Task ID 0 | PASS | 62개 Task ID 모두 고유 |
 | 3 | Depends On 누락 0 | PASS | 모든 Depends On이 실제 Task ID를 참조함 |
 | 4 | Dependency Cycle 0 | PASS | 순환 의존성 없음 |
 | 5 | Screen 5개 모두 Page Owner 정확히 1개 | PASS | Screen 5개 전부 Page Owner 1개 |

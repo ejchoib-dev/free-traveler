@@ -95,6 +95,30 @@
       "route": "*",
       "page_entry": "src/app/error.tsx",
       "note": "500/런타임 오류 복구 화면(REQ-FUNC-078). 디자인 Screen 수에 포함하지 않음"
+    },
+    {
+      "type": "policy_page",
+      "route": "/legal/terms",
+      "page_entry": "src/app/legal/terms/page.tsx",
+      "note": "이용약관(REQ-FUNC-080). D-001 §7 Footer '정책' 링크가 요구하나 5개 Screen 어디에도 본문을 담을 곳이 없어 DEC-015로 추가한 정적 콘텐츠 경로. 디자인 Screen 수(5개)에 포함하지 않음"
+    },
+    {
+      "type": "policy_page",
+      "route": "/legal/privacy",
+      "page_entry": "src/app/legal/privacy/page.tsx",
+      "note": "개인정보처리방침(REQ-FUNC-080). DEC-015 참조. 디자인 Screen 수에 포함하지 않음"
+    },
+    {
+      "type": "policy_page",
+      "route": "/legal/companion-guidelines",
+      "page_entry": "src/app/legal/companion-guidelines/page.tsx",
+      "note": "동행 안전수칙(REQ-FUNC-080). DEC-015 참조. 디자인 Screen 수에 포함하지 않음"
+    },
+    {
+      "type": "policy_page",
+      "route": "/legal/content-disclaimer",
+      "page_entry": "src/app/legal/content-disclaimer/page.tsx",
+      "note": "콘텐츠 면책 안내(REQ-FUNC-080). DEC-015 참조. 디자인 Screen 수에 포함하지 않음"
     }
   ],
   "required_navigation": [

@@ -22,15 +22,15 @@
 
 ## Current Wave
 
-**아직 시작 전** — `scripts/build_waves.py`가 `TASKS/WAVE_PLAN.md`·`TASKS/WAVE_STATE.json`을 생성했다(27개 Wave, `TASKS/TASK_DAG.md`에 전체 의존관계 기록, 순환 의존성 0건). `WAVE_STATE.json`의 모든 Wave가 `status=pending`이며, `current_wave` 지정 없이 `/run-wave W01`부터 시작하면 된다.
+**W01 완료(`status=completed`, `checkpoint_required=false`)** — `/run-wave W01`로 DATA-DESTINATIONS·SHARED-DESIGN-TOKENS·SHARED-FAVORITES·SHARED-TOAST 4개 Task를 순서대로 구현했다. Page Owner가 없는 Wave라 Browser Checkpoint 대상이 아니므로 바로 `/run-wave W02`로 이어갈 수 있다(단, 규칙 5에 따라 자동으로 이어지지 않으며 사람이 직접 호출해야 한다).
 
 ## Current Task
 
-**없음** — Wave 실행 전이라 선택된 Task가 없다.
+**없음** — W01의 모든 Task가 `done`. 다음은 W02.
 
 ## Completed Tasks
 
-**0 / 61** — `TASKS/00_TASK_LIST.md`의 모든 행이 아직 `PENDING`이다(`TASKS/TASK-*.md` 상세는 61개 전부 작성 완료됐지만, 실제 구현은 착수되지 않았다).
+**4 / 61** — `DATA-DESTINATIONS`, `SHARED-DESIGN-TOKENS`, `SHARED-FAVORITES`, `SHARED-TOAST`. 나머지 57개는 아직 `PENDING`(`TASKS/TASK-*.md` 상세는 61개 전부 작성 완료).
 
 ## Blocked Tasks
 

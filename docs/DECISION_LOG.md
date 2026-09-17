@@ -163,6 +163,17 @@
 
 ---
 
+## DEC-015 — 정책 문서 4종은 `/legal/*` 정적 경로로 추가(5개 Screen 수에는 미포함)
+
+| 항목 | 내용 |
+|---|---|
+| Status | ACCEPTED |
+| Context | `design-reference/D-001/DESIGN.md` §7과 REQ-FUNC-064·080은 Footer에 이용약관·개인정보처리방침·동행 안전수칙·콘텐츠 면책 안내 링크 4개를 요구한다. 그러나 확정된 5개 Screen(SCR-001~005)·`design-reference/SCREEN_ROUTE_CONTRACT.json`에는 이 정책 본문을 담을 Page가 없고, REQ-FUNC-080을 참조하는 다른 Task(`PAGE-SCR003`, `COMP-SCR003-MATE-WRITE`, `COMP-SCR004-SAFETY-GUIDE`)도 동의 체크박스·안전 배너만 만들 뿐 정책 본문 페이지 자체는 만들지 않는다. `SHARED-LAYOUT`(Footer) 구현 중 발견했다. |
+| Decision | `/legal/terms`, `/legal/privacy`, `/legal/companion-guidelines`, `/legal/content-disclaimer` 4개 정적 콘텐츠 경로를 추가한다. 이 경로들은 `design-reference/SCREEN_ROUTE_CONTRACT.json`의 `screens`(5개, 핵심 4·보조 1)가 아니라 기존 `technical_routes`(원래 `/auth/callback`, `/api/*`, not-found, error-boundary가 있던 목록)에 `type: "policy_page"`로 추가한다 — **Screen 개수·역할 구성(핵심 4·보조 1)은 바뀌지 않는다**(DEC-002 유지). Task는 `COMP-LEGAL-DOCS`(Category=COMPONENT, Screen 칸은 "해당없음")로 `TASKS/00_TASK_LIST.md`에 추가하고 `PAGE_OWNER`로 분류하지 않는다(5개 Screen의 Page Owner 유일성 검사에 걸리지 않도록). |
+| Consequence | `scripts/check_screen_contract.py`의 `TECH_ROUTE_PREFIXES`에 `/legal/`을 추가해 이 경로들을 "계약에 없는 예상치 못한 Page"로 오탐하지 않게 한다. `FIXED_SCREENS`(5개)는 그대로 유지한다. 향후 정책 문서가 실제 법무 검토를 거치면 이 로그에 새 DEC 항목을 추가하고 본문을 갱신한다. |
+
+---
+
 ## 요약 표
 
 | ID | 결정 | 상태 |
@@ -181,3 +192,4 @@
 | DEC-012 | PR·Merge는 사용자가 수동 수행 | ACCEPTED |
 | DEC-013 | EC2·AWS는 사용하지 않음 | ACCEPTED |
 | DEC-014 | 제외 기능은 EXCLUDED로 관리 | ACCEPTED |
+| DEC-015 | 정책 문서 4종은 `/legal/*` 정적 경로로 추가(5개 Screen 수 불변) | ACCEPTED |
