@@ -3,7 +3,7 @@
 | 항목 | 내용 |
 |---|---|
 | Document ID | PROJECT-STATE-TRAVEL-001 |
-| 최종 갱신일 | 2026-09-16 (build_waves.py 실행 후 갱신) |
+| 최종 갱신일 | 2026-09-17 (CI/검증 Script/run-wave.md 최신화 후 갱신) |
 | 갱신 방법 | 이 문서는 **스냅샷**이다. `/run-wave`가 Wave를 진행하거나 `/release-check`를 실행할 때마다 사람 또는 Agent가 아래 필드를 실제 상태(`TASKS/WAVE_STATE.json`, `TASKS/00_TASK_LIST.md`, `git`, `gh`, `supabase/`)에 맞춰 다시 써야 한다. 오래된 값을 그대로 두지 않는다. |
 
 ---
@@ -34,15 +34,15 @@
 
 ## Blocked Tasks
 
-**0**(진행 자체가 시작되지 않아 개별 Task가 BLOCKED로 기록된 적 없음). 다만 `docs/ARCHITECTURE.md` §17에 기록된 착수 전 공통 차단 요인이 아직 해소되지 않았다:
-- `@supabase/supabase-js`, `@supabase/ssr`, `vitest`, `@playwright/test` 미설치
+**0**(진행 자체가 시작되지 않아 개별 Task가 BLOCKED로 기록된 적 없음). 다만 `docs/ARCHITECTURE.md` §17에 기록된 착수 전 공통 차단 요인 중 아래는 아직 해소되지 않았다:
+- `@supabase/supabase-js`, `@supabase/ssr` 미설치 (`vitest`·`@playwright/test`·`prettier`는 설치 완료)
 - `.env.local`/`.env.example` 없음
-- `supabase/`, `.github/workflows/`, `tests/` 디렉터리 없음
+- `supabase/`, `tests/` 디렉터리 없음 (`.github/workflows/ci.yml`은 작성 완료)
 - Supabase 클라우드 프로젝트 존재 여부 미확인(로컬에서 확인 불가)
 
 ## Latest CI
 
-**없음** — `git remote -v` 결과 GitHub 원격 저장소가 연결되어 있지 않다(로컬 `master` 브랜치만 존재). CI 실행 이력 자체가 없다.
+**없음(실행 이력 기준)** — GitHub 원격(`origin=https://github.com/ejchoib-dev/free-traveler.git`, `main` 브랜치)은 연결되어 있고 harness 문서 98개 파일이 이미 push되었다. `.github/workflows/ci.yml`도 작성되었지만, ci.yml 자체와 `package.json`/검증 Script 변경분은 아직 커밋·push 전이라 Actions 실행 이력은 없다.
 
 ## Supabase State
 
@@ -76,8 +76,10 @@
 | SCR-001·SCR-002 이미지가 임시/서명된 외부 URL(`lh3.googleusercontent.com`)에 의존 — 프로덕션 전 자체 호스팅 검토 필요 | `docs/STITCH_VALIDATION_REPORT.md` |
 | ~~`run-wave.md` 옛 `WAVE_STATE.json` 형식 불일치~~ — `run-wave.md`·`prepare-task.md`·`release-check.md`를 전부 `waves[]` 배열 스키마(`task_status`, `checkpoint_result`)에 맞게 갱신 완료 | `.claude/commands/run-wave.md`, `.claude/commands/prepare-task.md`, `.claude/commands/release-check.md` |
 | CMS·외부 Email 공급자·Monitoring은 이번 범위에서 완전히 제외(재도입 시 `docs/ARCHITECTURE.md` §18부터 개정) | `docs/ARCHITECTURE.md` §18 |
+| `.github/workflows/ci.yml`, 검증 Script 13종(`package.json`), `vitest.config.ts`, `playwright.config.ts`, `scripts/check_format.py`·`check_screen_contract.py`·`run_release_smoke.py` 작성 완료했으나 GitHub에는 아직 push 전(로컬 uncommitted) | 로컬 `git status` |
 
 ## Next Action
 
-1. `docs/ARCHITECTURE.md` §17의 착수 차단 항목 해소: 필요 패키지 설치, `.env.local` 작성, Supabase 프로젝트 생성, `.github/workflows/` 추가.
-2. 위가 끝나면 `TASKS/WAVE_PLAN.md`의 `W01`(DATA-DESTINATIONS/SHARED-DESIGN-TOKENS/SHARED-FAVORITES/SHARED-TOAST)부터 `/run-wave W01`로 실제 구현을 시작한다.
+1. (선택) 지금까지 작성된 CI/검증 Script 변경분을 GitHub `main`에 commit·push할지 결정 — 아직 요청받지 않아 대기 중.
+2. `docs/ARCHITECTURE.md` §17의 남은 착수 차단 항목 해소: `@supabase/supabase-js`/`@supabase/ssr` 설치, `.env.local`/`.env.example` 작성, Supabase 클라우드 프로젝트 생성·`supabase/` 디렉터리 구성.
+3. 위가 끝나면 `TASKS/WAVE_PLAN.md`의 `W01`(DATA-DESTINATIONS/SHARED-DESIGN-TOKENS/SHARED-FAVORITES/SHARED-TOAST)부터 `/run-wave W01`로 실제 구현을 시작한다.
