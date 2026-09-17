@@ -194,14 +194,15 @@ CI가 통과해도 **자동(무인) 병합을 수행하지 않는다.** 모든 �
 
 | 항목 | 현재 상태(확인됨) | 어떤 Task 착수 전에 필요한가 |
 |---|---|---|
-| `@supabase/supabase-js`, `@supabase/ssr` 패키지 | `package.json`에 없음, `node_modules`에 미설치 | `SHARED-AUTH-SETUP`, `DB-ACCESS`, `COMP-SCR005-AUTH` 등 Supabase를 쓰는 모든 Task |
-| `vitest` 패키지 | `package.json`에 없음 | `UNIT-TRAVEL-DATES`, `UNIT-CONTACT-DETECTION`, `UNIT-MATE-STATE`, `TEST-RLS-BASIC` |
-| `@playwright/test` 패키지 | `package.json`에 없음 | `E2E-PUBLIC-SMOKE`, `E2E-TRAVEL-TOOLS`, `E2E-MATE-AUTH` |
-| `.env.local` / `.env.example` | 저장소에 없음(확인됨) | `SHARED-AUTH-SETUP`, `DB-ACCESS`, `COMP-SCR003-FLIGHT`/`HOTEL`(외부 URL), `DEPLOY-ENV-CHECK`. 필요한 키: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `FLIGHT_OUTBOUND_URL`, `HOTEL_OUTBOUND_URL`, `MOFA_SAFETY_URL` |
+| ~~`@supabase/supabase-js`, `@supabase/ssr` 패키지~~ | **해소됨** — `package.json`/`node_modules`에 설치 완료(`@supabase/supabase-js@^2.116.0`, `@supabase/ssr@^0.12.7`) | — |
+| ~~`vitest` 패키지~~ | **해소됨** — 설치 완료, `vitest.config.ts` 작성 완료 | — |
+| ~~`@playwright/test` 패키지~~ | **해소됨** — 설치 완료, `playwright.config.ts` 작성 완료(Chromium 단일 프로젝트) | — |
+| `.env.local` | 저장소에 없음(확인됨, `.gitignore`로 계속 추적 제외) — 실제 Supabase URL/키 발급 후 사람이 직접 채워야 함 | `SHARED-AUTH-SETUP`, `DB-ACCESS`, `COMP-SCR003-FLIGHT`/`HOTEL`(외부 URL), `DEPLOY-ENV-CHECK` |
+| ~~`.env.example`~~ | **해소됨** — 필요한 키 목록만 담은 템플릿 생성 완료(`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `FLIGHT_OUTBOUND_URL`, `HOTEL_OUTBOUND_URL`, `MOFA_SAFETY_URL`) | — |
 | `supabase/` 디렉터리(마이그레이션·seed) | 저장소에 없음(확인됨) | `DB-SCHEMA-BASE`, `DB-RLS-BASE`, `DB-SEED-BASE` |
-| `.github/workflows/` | 저장소에 없음(확인됨) | `CI-PIPELINE-BASE` |
-| `tests/` 디렉터리 | 저장소에 없음(확인됨) | 모든 UNIT/RLS/E2E Task |
-| Supabase 프로젝트 자체(실제 클라우드 리소스) | 이 세션에서 존재 여부를 확인할 수 없음(로컬 저장소 범위 밖) | `DB-SCHEMA-BASE` 이전에 사람이 Supabase 프로젝트를 생성하고 URL/키를 발급해야 함 |
+| ~~`.github/workflows/`~~ | **해소됨** — `ci.yml` 작성 완료(quality + public-smoke Job) | — |
+| `tests/` 디렉터리 | 저장소에 없음(확인됨) — `vitest`/`playwright` 설정은 `passWithNoTests`로 대비돼 있으나 실제 Test 파일은 각 UNIT/RLS/E2E Task에서 작성 | 모든 UNIT/RLS/E2E Task |
+| Supabase 프로젝트 자체(실제 클라우드 리소스) | 이 세션에서 존재 여부를 확인할 수 없음(로컬 저장소 범위 밖, 사람의 Supabase 계정 필요) | `DB-SCHEMA-BASE` 이전에 사람이 Supabase 프로젝트를 생성하고 URL/키를 발급해야 함 |
 
 ---
 

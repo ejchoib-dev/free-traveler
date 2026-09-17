@@ -34,11 +34,12 @@
 
 ## Blocked Tasks
 
-**0**(진행 자체가 시작되지 않아 개별 Task가 BLOCKED로 기록된 적 없음). 다만 `docs/ARCHITECTURE.md` §17에 기록된 착수 전 공통 차단 요인 중 아래는 아직 해소되지 않았다:
-- `@supabase/supabase-js`, `@supabase/ssr` 미설치 (`vitest`·`@playwright/test`·`prettier`는 설치 완료)
-- `.env.local`/`.env.example` 없음
-- `supabase/`, `tests/` 디렉터리 없음 (`.github/workflows/ci.yml`은 작성 완료)
-- Supabase 클라우드 프로젝트 존재 여부 미확인(로컬에서 확인 불가)
+**0**(진행 자체가 시작되지 않아 개별 Task가 BLOCKED로 기록된 적 없음). `docs/ARCHITECTURE.md` §17에 기록된 착수 전 공통 차단 요인 중 남은 것:
+- `.env.local` 없음 — 실제 Supabase URL/키 발급 후 사람이 직접 채워야 함(`.env.example` 템플릿은 작성 완료)
+- `supabase/`, `tests/` 디렉터리 없음
+- Supabase 클라우드 프로젝트 존재 여부 미확인(로컬에서 확인 불가, 사람의 계정 필요)
+
+(패키지 설치 — `@supabase/supabase-js`·`@supabase/ssr`·`vitest`·`@playwright/test`·`prettier` — 및 `.github/workflows/ci.yml`은 모두 해소됨)
 
 ## Latest CI
 
