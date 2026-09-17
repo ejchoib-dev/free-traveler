@@ -30,14 +30,14 @@
         "SHARED-LAYOUT",
         "COMP-LEGAL-DOCS"
       ],
-      "status": "in_progress",
+      "status": "completed",
       "checkpoint_required": false,
       "checkpoint_result": null,
       "task_status": {
         "DATA-REPRESENTATIVE": "done",
         "DATA-SAFETY": "done",
         "SHARED-LAYOUT": "done",
-        "COMP-LEGAL-DOCS": "ready"
+        "COMP-LEGAL-DOCS": "done"
       }
     },
     {
