@@ -28,12 +28,12 @@ export function CountryNoticeGrid() {
 
   return (
     <>
-      <section className="mx-auto w-full max-w-screen-xl px-5 py-12 md:py-16">
-        <h2 className="mb-8 text-2xl font-semibold text-ink md:text-3xl">
+      <section className="mx-auto w-full max-w-screen-xl px-[var(--spacing-token-lg)] py-[var(--spacing-section-compact-mobile)] md:py-[var(--spacing-section-standard-desktop)]">
+        <h2 className="text-display-md mb-[var(--spacing-token-xxl)] font-semibold text-[var(--color-ink)]">
           국가별 주의사항
         </h2>
 
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+        <div className="grid gap-[var(--spacing-token-md)] sm:grid-cols-2 md:grid-cols-3 md:gap-[var(--spacing-token-xl)]">
           {displayed.map((info) => {
             const isStale = isSafetyInfoStale(info.lastCheckedAt);
             const hasAlerts = info.alerts && info.alerts.length > 0;
@@ -43,33 +43,33 @@ export function CountryNoticeGrid() {
               <button
                 key={info.id}
                 onClick={() => setSelectedCountry(info)}
-                className="flex flex-col gap-3 rounded-[12px] border border-gray-200 bg-white p-4 text-left shadow-md transition-all hover:shadow-lg md:p-6"
+                className="flex flex-col gap-[var(--spacing-token-md)] rounded-[var(--radius-token-md)] border border-[var(--color-hairline)] bg-[var(--color-canvas)] p-[var(--spacing-token-lg)] text-left shadow-[var(--shadow-card)] transition-all duration-[var(--transition-base)] hover:shadow-[var(--shadow-card-hover)] md:p-[var(--spacing-token-xl)]"
               >
                 {/* 제목 */}
-                <h3 className="font-semibold text-ink">{info.country}</h3>
+                <h3 className="text-title-md font-semibold text-[var(--color-ink)]">{info.country}</h3>
 
                 {/* 경보 상태 */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-[var(--spacing-token-sm)]">
                   {alertLevel && (
-                    <span className="inline-flex rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+                    <span className="inline-flex rounded-[var(--radius-token-full)] bg-[var(--color-critical-soft)] px-[var(--spacing-token-md)] py-[var(--spacing-token-xs)] text-caption font-medium text-[var(--color-critical)]">
                       경보: {alertLevel}
                     </span>
                   )}
 
                   {isStale && (
-                    <span className="inline-flex rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-700">
+                    <span className="inline-flex rounded-[var(--radius-token-full)] bg-[var(--color-warning-soft)] px-[var(--spacing-token-md)] py-[var(--spacing-token-xs)] text-caption font-medium text-[var(--color-warning)]">
                       ⚠️ 정보 오래됨
                     </span>
                   )}
                 </div>
 
                 {/* 최종 확인일 */}
-                <p className="text-xs text-muted">
+                <p className="text-caption text-[var(--color-muted)]">
                   최종 확인: {new Date(info.lastCheckedAt).toLocaleDateString("ko-KR")}
                 </p>
 
                 {/* CTA */}
-                <p className="text-xs font-medium text-primary">
+                <p className="text-caption font-medium text-[var(--color-primary)]">
                   주의사항 보기 →
                 </p>
               </button>

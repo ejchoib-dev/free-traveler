@@ -79,7 +79,7 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-[var(--spacing-token-lg)] sm:h-[72px]">
         <Link
           href="/"
-          className="text-[18px] font-bold text-[var(--color-ink)]"
+          className="text-title-md font-bold text-[var(--color-ink)] transition-colors duration-[var(--transition-base)] hover:text-[var(--color-primary)]"
         >
           Free Traveler
         </Link>
@@ -92,7 +92,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[16px] font-semibold text-[var(--color-body)] hover:text-[var(--color-primary)]"
+              className="text-title-sm font-semibold text-[var(--color-body)] transition-colors duration-[var(--transition-base)] hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-1 rounded-[var(--radius-token-sm)]"
             >
               {link.label}
             </Link>
@@ -103,7 +103,7 @@ export function Header() {
           <Link
             href="/account"
             aria-label="계정"
-            className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-token-full)] border border-[var(--color-hairline)] text-[var(--color-ink)]"
+            className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-token-full)] border border-[var(--color-hairline)] text-[var(--color-ink)] transition-all duration-[var(--transition-base)] hover:border-[var(--color-primary)] hover:bg-[var(--color-surface-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-1"
           >
             <AccountIcon />
           </Link>

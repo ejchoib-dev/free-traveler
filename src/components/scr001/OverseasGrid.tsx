@@ -25,20 +25,20 @@ export function OverseasGrid() {
 
   if (displayed.length === 0) {
     return (
-      <section className="mx-auto w-full max-w-screen-xl px-5 py-12 md:py-16">
-        <h2 className="mb-8 text-2xl font-semibold text-ink md:text-3xl">
+      <section className="mx-auto w-full max-w-screen-xl px-[var(--spacing-token-lg)] py-[var(--spacing-section-compact-mobile)] md:py-[var(--spacing-section-standard-desktop)]">
+        <h2 className="text-display-md mb-[var(--spacing-token-xxl)] font-semibold text-[var(--color-ink)]">
           해외 추천 여행지
         </h2>
-        <div className="flex flex-col items-center gap-4 rounded-lg bg-gray-50 px-6 py-12 text-center">
-          <p className="text-base font-medium text-ink">
+        <div className="flex flex-col items-center gap-[var(--spacing-token-md)] rounded-[var(--radius-token-md)] bg-[var(--color-surface-soft)] px-[var(--spacing-token-xl)] py-[var(--spacing-section-compact-mobile)] text-center">
+          <p className="text-title-md font-semibold text-[var(--color-ink)]">
             아직 등록된 해외 여행지가 없습니다.
           </p>
-          <p className="text-sm text-muted">
+          <p className="text-body-sm text-[var(--color-muted)]">
             조건을 완화해보시거나 다시 시도해주세요.
           </p>
           <button
             onClick={() => window.location.reload()}
-            className="mt-4 rounded-lg bg-primary px-6 py-2 text-sm font-medium text-white transition-all hover:bg-red-600"
+            className="mt-[var(--spacing-token-lg)] rounded-[var(--radius-token-sm)] bg-[var(--color-primary)] px-[var(--spacing-token-xl)] py-[var(--spacing-token-sm)] text-button font-semibold text-[var(--color-on-primary)] transition-all duration-[var(--transition-base)] hover:bg-[var(--color-primary-active)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
           >
             초기화
           </button>
@@ -48,42 +48,42 @@ export function OverseasGrid() {
   }
 
   return (
-    <section className="mx-auto w-full max-w-screen-xl px-5 py-12 md:py-16">
-      <h2 className="mb-8 text-2xl font-semibold text-ink md:text-3xl">
+    <section className="mx-auto w-full max-w-screen-xl px-[var(--spacing-token-lg)] py-[var(--spacing-section-compact-mobile)] md:py-[var(--spacing-section-standard-desktop)]">
+      <h2 className="text-display-md mb-[var(--spacing-token-xxl)] font-semibold text-[var(--color-ink)]">
         해외 추천 여행지
       </h2>
 
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+      <div className="grid gap-[var(--spacing-token-md)] sm:grid-cols-2 md:grid-cols-3 md:gap-[var(--spacing-token-xl)]">
         {displayed.map((dest) => (
           <article
             key={dest.id}
-            className="group overflow-hidden rounded-[12px] bg-white shadow-md transition-shadow hover:shadow-lg"
+            className="group overflow-hidden rounded-[var(--radius-token-md)] bg-[var(--color-canvas)] shadow-[var(--shadow-card)] transition-all duration-[var(--transition-base)] hover:shadow-[var(--shadow-card-hover)]"
           >
             {/* 이미지 */}
-            <div className="relative h-48 w-full overflow-hidden bg-gray-200">
+            <div className="relative h-48 w-full overflow-hidden bg-[var(--color-surface-soft)]">
               {dest.images && dest.images.length > 0 ? (
                 <Image
                   src={dest.images[0].url}
                   alt={dest.images[0].alt}
                   fill
-                  className="object-cover transition-transform group-hover:scale-105"
+                  className="object-cover transition-transform duration-[var(--transition-base)] group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
                 />
               ) : (
-                <div className="flex h-full items-center justify-center bg-gray-200 text-gray-400">
+                <div className="flex h-full items-center justify-center bg-[var(--color-surface-soft)] text-[var(--color-muted-soft)]">
                   이미지 없음
                 </div>
               )}
             </div>
 
             {/* 콘텐츠 */}
-            <div className="flex flex-col gap-2 p-4">
-              <h3 className="font-semibold text-ink line-clamp-1">
+            <div className="flex flex-col gap-[var(--spacing-token-sm)] p-[var(--spacing-token-lg)]">
+              <h3 className="text-title-md line-clamp-1 font-semibold text-[var(--color-ink)]">
                 {dest.name}
               </h3>
-              <p className="text-sm text-muted line-clamp-2">{dest.intro}</p>
-              <p className="text-xs font-medium text-primary">
+              <p className="text-body-sm line-clamp-2 text-[var(--color-body)]">{dest.intro}</p>
+              <p className="text-caption font-medium text-[var(--color-primary)]">
                 {dest.country}
               </p>
             </div>

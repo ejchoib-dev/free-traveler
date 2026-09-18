@@ -36,7 +36,7 @@ function FooterColumn({
 }) {
   return (
     <div className="flex flex-col gap-[var(--spacing-token-sm)]">
-      <h2 className="text-[13px] font-semibold text-[var(--color-muted)]">
+      <h2 className="text-caption font-semibold text-[var(--color-muted)] uppercase tracking-[var(--tracking-label)]">
         {title}
       </h2>
       {children}
@@ -58,7 +58,7 @@ export function Footer() {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="text-[14px] text-[var(--color-body)] hover:text-[var(--color-primary)]"
+                  className="text-body-sm text-[var(--color-body)] transition-colors duration-[var(--transition-base)] hover:text-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
                 >
                   {link.label}
                 </Link>
@@ -73,7 +73,7 @@ export function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-[14px] text-[var(--color-body)] hover:text-[var(--color-primary)]"
+                  className="text-body-sm text-[var(--color-body)] transition-colors duration-[var(--transition-base)] hover:text-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
                 >
                   {link.label}
                 </Link>
@@ -89,7 +89,7 @@ export function Footer() {
                 href={MOFA_SAFETY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[14px] text-[var(--color-body)] hover:text-[var(--color-primary)]"
+                className="text-body-sm text-[var(--color-body)] transition-colors duration-[var(--transition-base)] hover:text-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
               >
                 공식 출처: 외교부 해외안전여행
               </a>
@@ -98,7 +98,7 @@ export function Footer() {
               <li>
                 <a
                   href={contactEmail.url}
-                  className="text-[14px] text-[var(--color-body)] hover:text-[var(--color-primary)]"
+                  className="text-body-sm text-[var(--color-body)] transition-colors duration-[var(--transition-base)] hover:text-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
                 >
                   문의
                 </a>
@@ -109,7 +109,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-[var(--color-hairline-soft)] px-[var(--spacing-token-lg)] py-[var(--spacing-token-md)]">
-        <p className="mx-auto max-w-6xl text-[13px] text-[var(--color-muted)]">
+        <p className="mx-auto max-w-6xl text-caption text-[var(--color-muted)]">
           본 서비스는 항공·호텔 예약을 대행하지 않으며, 안전정보는 공식 출처
           확인을 대체하지 않습니다.
         </p>

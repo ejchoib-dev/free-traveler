@@ -112,20 +112,20 @@ export function HeroSearch() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-12 md:py-16">
-      <div className="mx-auto flex max-h-[520px] w-full max-w-screen-xl flex-col gap-6 overflow-y-auto px-5 md:max-h-[520px]">
+    <section className="w-full bg-[var(--color-surface-soft)] py-[var(--spacing-section-compact-mobile)] md:py-[var(--spacing-section-hero-desktop)]">
+      <div className="mx-auto flex max-h-[520px] w-full max-w-screen-xl flex-col gap-[var(--spacing-token-xl)] overflow-y-auto px-[var(--spacing-token-lg)] md:gap-[var(--spacing-token-xxl)] md:max-h-[520px]">
         {/* 제목 */}
         <div>
-          <h1 className="text-3xl font-bold text-ink md:text-4xl">
+          <h1 className="text-display-lg text-[var(--color-ink)]">
             여행지 검색
           </h1>
-          <p className="mt-2 text-sm text-muted md:text-base">
+          <p className="mt-[var(--spacing-token-sm)] text-body-sm text-[var(--color-muted)]">
             {results.length}개의 여행지를 찾았습니다
           </p>
         </div>
 
         {/* 검색 및 필터 */}
-        <div className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-[var(--spacing-token-md)] md:gap-[var(--spacing-token-xl)]">
           {/* 키워드 입력 */}
           <input
             type="text"
@@ -134,18 +134,18 @@ export function HeroSearch() {
             onChange={(e) =>
               setFilters({ ...filters, keyword: e.target.value })
             }
-            className="rounded-lg border border-gray-300 px-4 py-3 text-base outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+            className="rounded-[var(--radius-token-sm)] border border-[var(--color-hairline)] bg-[var(--color-canvas)] px-[var(--spacing-token-md)] py-[var(--spacing-token-sm)] text-body-md text-[var(--color-ink)] placeholder-[var(--color-muted)] transition-all duration-[var(--transition-base)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-surface-soft)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
           />
 
           {/* 필터 그룹 */}
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid gap-[var(--spacing-token-sm)] sm:grid-cols-2 md:grid-cols-4 md:gap-[var(--spacing-token-md)]">
             {/* 국가 */}
             <select
               value={filters.country}
               onChange={(e) =>
                 setFilters({ ...filters, country: e.target.value })
               }
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+              className="rounded-[var(--radius-token-sm)] border border-[var(--color-hairline)] bg-[var(--color-canvas)] px-[var(--spacing-token-md)] py-[var(--spacing-token-sm)] text-body-sm text-[var(--color-ink)] transition-all duration-[var(--transition-base)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-surface-soft)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
             >
               <option value="">국가 (전체)</option>
               {countries.map((country) => (
@@ -161,7 +161,7 @@ export function HeroSearch() {
               onChange={(e) =>
                 setFilters({ ...filters, season: e.target.value })
               }
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+              className="rounded-[var(--radius-token-sm)] border border-[var(--color-hairline)] bg-[var(--color-canvas)] px-[var(--spacing-token-md)] py-[var(--spacing-token-sm)] text-body-sm text-[var(--color-ink)] transition-all duration-[var(--transition-base)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-surface-soft)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
             >
               <option value="">계절 (전체)</option>
               {seasons.map((season) => (
@@ -177,7 +177,7 @@ export function HeroSearch() {
               onChange={(e) =>
                 setFilters({ ...filters, theme: e.target.value })
               }
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+              className="rounded-[var(--radius-token-sm)] border border-[var(--color-hairline)] bg-[var(--color-canvas)] px-[var(--spacing-token-md)] py-[var(--spacing-token-sm)] text-body-sm text-[var(--color-ink)] transition-all duration-[var(--transition-base)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-surface-soft)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
             >
               <option value="">테마 (전체)</option>
               {themes.slice(0, 20).map((theme) => (
@@ -190,7 +190,7 @@ export function HeroSearch() {
             {/* 초기화 버튼 */}
             <button
               onClick={handleReset}
-              className="rounded-lg bg-gray-200 px-3 py-2 text-sm font-medium text-ink transition-colors hover:bg-gray-300"
+              className="rounded-[var(--radius-token-sm)] border border-[var(--color-hairline)] bg-[var(--color-surface-soft)] px-[var(--spacing-token-md)] py-[var(--spacing-token-sm)] text-body-sm font-semibold text-[var(--color-ink)] transition-all duration-[var(--transition-base)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-surface-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-1"
             >
               필터 초기화
             </button>
@@ -199,16 +199,16 @@ export function HeroSearch() {
 
         {/* 결과 요약 */}
         {results.length === 0 ? (
-          <div className="flex flex-col items-center gap-3 rounded-lg bg-gray-50 px-6 py-8 text-center">
-            <p className="text-base font-medium text-ink">
+          <div className="flex flex-col items-center gap-[var(--spacing-token-md)] rounded-[var(--radius-token-md)] bg-[var(--color-surface-soft)] px-[var(--spacing-token-xl)] py-[var(--spacing-token-xxxl)] text-center">
+            <p className="text-title-md font-semibold text-[var(--color-ink)]">
               검색 결과가 없습니다.
             </p>
-            <p className="text-sm text-muted">
+            <p className="text-body-sm text-[var(--color-muted)]">
               조건을 완화하고 다시 시도해주세요.
             </p>
           </div>
         ) : (
-          <p className="text-xs text-muted md:text-sm">
+          <p className="text-caption text-[var(--color-muted)] md:text-body-sm">
             검색 및 필터 조건이 적용되었습니다.
           </p>
         )}

@@ -27,22 +27,22 @@ export function ThemeChips() {
   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
 
   return (
-    <section className="mx-auto w-full max-w-screen-xl px-5 py-12 md:py-16">
-      <h2 className="mb-8 text-2xl font-semibold text-ink md:text-3xl">
+    <section className="mx-auto w-full max-w-screen-xl px-[var(--spacing-token-lg)] py-[var(--spacing-section-compact-mobile)] md:py-[var(--spacing-section-standard-desktop)]">
+      <h2 className="text-display-md mb-[var(--spacing-token-xxl)] font-semibold text-[var(--color-ink)]">
         여행 테마로 찾기
       </h2>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-[var(--spacing-token-md)]">
         {THEMES.map((theme) => (
           <button
             key={theme}
             onClick={() =>
               setSelectedTheme(selectedTheme === theme ? null : theme)
             }
-            className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+            className={`rounded-[var(--radius-token-full)] px-[var(--spacing-token-lg)] py-[var(--spacing-token-sm)] text-button font-semibold transition-all duration-[var(--transition-base)] ${
               selectedTheme === theme
-                ? "bg-primary text-white"
-                : "border border-gray-300 text-ink hover:border-primary"
+                ? "bg-[var(--color-primary)] text-[var(--color-on-primary)] shadow-[var(--shadow-card)]"
+                : "border border-[var(--color-hairline)] text-[var(--color-ink)] hover:border-[var(--color-primary)] hover:bg-[var(--color-surface-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-1"
             }`}
           >
             {theme}
@@ -51,8 +51,8 @@ export function ThemeChips() {
       </div>
 
       {selectedTheme && (
-        <p className="mt-6 text-sm text-muted">
-          <strong>&quot;{selectedTheme}&quot;</strong> 테마의 여행지를
+        <p className="mt-[var(--spacing-token-xl)] text-body-sm text-[var(--color-muted)]">
+          <strong className="text-[var(--color-ink)]">&quot;{selectedTheme}&quot;</strong> 테마의 여행지를
           필터링했습니다.
         </p>
       )}
