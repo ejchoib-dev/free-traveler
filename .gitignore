@@ -47,3 +47,5 @@ next-env.d.ts
 /stitch_free_traveler*.zip
 /stitch_free_traveler (1)/
 /.stitch_preview/
+
+.vercel
